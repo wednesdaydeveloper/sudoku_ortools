@@ -29,7 +29,7 @@ def solve(cells):
   solver = cp_model.CpSolver()
   status = solver.Solve(model)
   if status == cp_model.FEASIBLE:
-    return [ [ solver.Value(variables[y][x]) for y in range(0, 9) ] for x in range(0, 9) ]
+    return [ [ solver.Value(variables[y][x]) for x in range(0, 9) ] for y in range(0, 9) ]
   else:
     return []
 
