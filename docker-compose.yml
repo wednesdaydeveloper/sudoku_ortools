@@ -1,0 +1,13 @@
+version: "3"
+services:
+  python:
+    volumes:
+      - ".:/mnt"
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        - "http_proxy"
+        - "https_proxy"
+    env_file: .env
+    tty: true
