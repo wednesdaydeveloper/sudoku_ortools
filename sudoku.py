@@ -1,7 +1,8 @@
 from __future__ import print_function
 from ortools.sat.python import cp_model
+import re
 
-def solve(cells):
+def solve(array):
   sub_block_mask = (
     (0, 0, 0, 1, 1, 1, 2, 2, 2),
     (0, 0, 0, 1, 1, 1, 2, 2, 2),
@@ -38,6 +39,11 @@ def solve(cells):
   else:
     return []
 
+def array2string(array2d):
+  return "".join(map(str, [ "".join(map(str, rows)) for rows in array2d]))
+
+def string2array(string):
+  return [ map(int, list(rows)) for rows in re.split('(\d{9})', string)[1::2]]
 
 if __name__ == '__main__':
 
@@ -70,5 +76,4 @@ if __name__ == '__main__':
 
   ans = solve(array)
 
-  for rows in ans:
-    print("".join(map(str, rows)))
+  print(array2string(ans))
